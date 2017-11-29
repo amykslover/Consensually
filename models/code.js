@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-	var Codes = sequelize.define('Codes', {
+	var Code = sequelize.define('Code', {
 		code: {
 			type: DataTypes.INTEGER,
 		},
@@ -9,12 +9,12 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	Codes.associate = function(models) {
-		Codes.belongsTo(models.User, {
+	Code.associate = function(models) {
+		Code.belongsTo(models.User, {
 	      foreignKey: {
 	        allowNull: false
 	      }			
 		})
 	}
-	return Codes;
+	return Code;
 }
