@@ -3,20 +3,20 @@ var bcrypt = require('bcrypt');
 module.exports = function(sequelize, DataTypes) {
 	
 	var User = sequelize.define('User', {
-		user_token: {
+		userToken: {
 			type: DataTypes.STRING
 		},
-		user_name: {
+		userName: {
 			type: DataTypes.STRING
 		}
 	});
 
 	User.associate = function(models) {
-		User.hasMany(models.Codes, {
+		User.hasMany(models.Code, {
 			onDelete: 'cascade'
 		});
 
-		User.belongsToMany(models.Encounters, {
+		User.belongsToMany(models.Encounter, {
 			through: {model: models.UserEncounters}
 		})
 	};

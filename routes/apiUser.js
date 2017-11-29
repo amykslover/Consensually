@@ -2,8 +2,8 @@ var passport = require('passport');
 // var passportFacebook = require('passport-facebook');
 // console.log(passportFacebook);
 var User = require('../models/user');
-var Encounters = require('../models/encounters');
-var Codes = require('../models/codes');
+var Encounters = require('../models/encounter');
+var Codes = require('../models/code');
 // var configAuth = require('../config/auth');
 
 module.exports = function(app) {
