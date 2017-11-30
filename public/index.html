@@ -1,64 +1,24 @@
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Consensually</title>
+    <title>Consensually</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+    </style>
 </head>
 <body>
+<div class="container">
 
-<h1>HELLO</h1>
+    <div class="jumbotron text-center">
+        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
 
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
+        <p>Login or Register with:</p>
 
+        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{latest-api-version}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
+    </div>
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-
-
-
-{
-    status: 'connected',
-    authResponse: {
-        accessToken: '...',
-        expiresIn:'...',
-        signedRequest:'...',
-        userID:'...'
-    }
-}
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-
-</script>
-
-
+</div>
 </body>
-</html>
+</html>   
