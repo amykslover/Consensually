@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Consensually</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/pinCode.css">
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/pinCode.js"></script>
+    <script>
+        $(document).ready(function() {
+
+        $('.pincode-input2').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
+            $(".pincode-callback").html("Complete callback from 6-digit test: Current value: " + value);
+            
+            $(errorElement).html("I'm sorry, but the code not correct");
+        }});
+
+            
+            
+        });
+    </script>
+
+</head>
+<body>
+<div id="user_header">
+    <h1>User Profile Placeholder</h1>
+    <p>Log Out</p>
+</div>
+
+<div class="container">
+
+        <div class="codeboxes">
+
+          <div class="box">
+
+            <div>   
+                <input type="text" class="pincode-input2" id="consent">
+            </div>
+           
+          </div>
+
+        </div>
+
+
+</div>
+
+
+</body>
+</html>   
