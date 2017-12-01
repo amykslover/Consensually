@@ -5,6 +5,7 @@ var User = require('../models/user');
 var Encounters = require('../models/encounter');
 var Codes = require('../models/code');
 var configAuth = require('../config/auth');
+var db = require('../models/index');
 
 
 module.exports = function(app, passport) {
@@ -52,7 +53,6 @@ module.exports = function(app, passport) {
 
 //This route is getting data from the user model
 	app.get('/api/user', function(req, res) {
-
 	    db.User.findAll({
 	      include: [{
 	      	model: db.Codes
@@ -62,16 +62,14 @@ module.exports = function(app, passport) {
 	    });
 	});
 
-  	app.get('/api/user/:id', function(req, res) {
-  		console.log(req)
-  		console.log(res)  		
-	    // db.User.findOne({
-	    //   where: {
-	    //   	id: req.params.id
-	    //   }
-	    // }).then(function(dbUser) {
-	    //   res.json(dbUser);
-	    // });
+  	app.get('/api/user/:id', function(req, res) { 		
+	    db.User.findOne({
+	      where: {
+	      	id: req.params.id
+	      }
+	    }).then(function(dbUser) {
+	      res.json(dbUser);
+	    });
 	});
 
   //Create a new user with the facebook sign on callback
