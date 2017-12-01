@@ -6,6 +6,7 @@ module.exports = function(app) {
 
   app.get("/", function(req, res) {
   	console.log("HOMEPAGE")
+
   	passport.use(new FacebookStrategy({
 	    clientID: '1376574052470030',
     	clientSecret: '774037ff78c23a030f3ca83dc1b6bb0f',
@@ -19,10 +20,11 @@ module.exports = function(app) {
 	    User.findOrCreate({ facebookId: profile.id }, function (error, user) {
 	    	console.log(user + "---------------------------------------------")
 	    	if(error) {
-	    		return cb(error)
+	    		return cb(error);
 	    	}
 	    	else {
-	    		return cb(user)
+	    		console.log(user);
+	    		return cb(user);
 	    		//We need to use this information to create the user in the users model
 	    	}
 	    });
@@ -31,6 +33,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
+  app.get("/profile", function(req, res) {
+  	res.sendFile(path.join(__dirname, "../public/profile.html"));
+  })
   app.get("/encounters", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/encounters.html"));
   });
