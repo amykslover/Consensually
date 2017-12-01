@@ -4,3 +4,49 @@ body {
 	padding-top:80px;
 	word-wrap:break-word;
 }
+.submit {
+	border-radius: 5px;
+}
+#user_header {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  padding: 10px;
+  background: white;
+  position:fixed;
+  top:0px;
+}
+
+.codeboxes {
+	margin-top: 100px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.newencounter {
+	text-align: center;
+	background: white;
+}
+
+.box {
+	margin: 20px auto;
+	text-align: center;
+    border-radius: 15px;
+    padding: 10px; 
+	width: 250px;
+    height: 150px;
+}
+
+.red {
+	background-color: #913C39; 
+
+}
+
+.yellow {
+	background-color: #E3CF46; 
+
+}
+
+.green {
+	background-color: #408B59; 
+}

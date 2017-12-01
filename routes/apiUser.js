@@ -14,11 +14,28 @@ module.exports = function(app, passport) {
     	successRedirect : '/profile',
         failureRedirect : '/'
     }
+    
+    app.get('/api/user', function(req, res) {
+        db.User.findAll({
+            include: [{
+                model: db.Codes
+            }]
+            }).then(function(dbUser) {
+                res.json(dbUser);
+            });
+        });
+
 
     //ROUTE FOR THE HOME PAGE
     app.get('/', function(req, res) {
         res.render('index.html');
     });
+
+
+
+    app.get('/:id', function(request, response) {
+        response.send('Path ' + request.params.id)
+    })
 
     // route for login form
     // route for processing the login form
@@ -26,30 +43,12 @@ module.exports = function(app, passport) {
     // route for processing the signup form
 
     // route for showing the profile page
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/profile/:id', isLoggedIn, function(req, res) {
         res.render('profile.html', {
             user : req.user // get the user out of session and pass to template
         });
     });
 
-    // =====================================
-    // FACEBOOK ROUTES =====================
-    // =====================================
-    // route for facebook authentication and login
-    app.get('/auth/facebook', 
-    	passport.authenticate('facebook'
-    	// scope : ['public_profile', 'email']
-    ));
-
-    // handle the callback after facebook has authenticated the user
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', options));
-
-    // route for logging out
-    // app.get('/logout', function(req, res) {
-    //     req.logout();
-    //     res.redirect('/');
-    // });
 
 //This route is getting data from the user model
 	app.get('/api/user', function(req, res) {

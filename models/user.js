@@ -3,11 +3,17 @@ var bcrypt = require('bcrypt');
 module.exports = function(sequelize, DataTypes) {
 	
 	var User = sequelize.define('User', { 
+		userFacebookID: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		userToken: {
-			type: DataTypes.STRING
+			type: DataTypes.STRING,
+			allowNull: false
 		},
 		userName: {
-			type: DataTypes.STRING
+			type: DataTypes.STRING,
+			allowNull: false
 		},
 		userEmail: {
 			type: DataTypes.STRING
@@ -20,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 		});
 
 		User.belongsToMany(models.Encounter, {
-			through: {model: models.UserEncounters}
+			through: {model: models.UserEncounter}
 		})
 	};
 	
