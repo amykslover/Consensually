@@ -24,6 +24,7 @@
 
 		// Create the defaults once
 		var pluginName = "pincodeInput";
+
 		var defaults = {
 				placeholders:undefined,							// seperate with a " "(space) to set an placeholder for each input box
 		    	inputs:4,									    // 4 input boxes = code of 4 digits long
@@ -138,7 +139,8 @@
 		        		// add events
 		        		this._addEventsToInput(input,1);
 
-					}else{
+					}
+					else{
 						// for desktop mode we build one input for each digit
 			        	for (var i = 0; i <  this.settings.inputs; i++) {
 
@@ -166,7 +168,7 @@
 
 
 		        	// error box
-		        	this._error = $('<div />').addClass('text-danger pincode-input-error').appendTo(this._container);
+		        	this._error = $('<div>').addClass('text-danger pincode-input-error').appendTo(this._container);
 
 		        	//hide original element and place this before it
 		        	$(this.element).css( "display", "none" );
