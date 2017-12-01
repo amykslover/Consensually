@@ -1,4 +1,10 @@
+var path = require("path");
+
 module.exports = function(app, passport) {
+
+  app.get("/profile", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/profile.html"));
+  });
 
  // Redirect the user to Facebook for authentication.  When complete,
   // Facebook will redirect the user back to the application at

@@ -37,20 +37,21 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 //Gives us access to the public folder so we can use the css, js, etc
 app.use(express.static('public'));
 
-
-require('./config/auth.js');
-require('./config/passport.js')(passport); // pass passport for configuration
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 //Must mount cookieParser before session. This will read cookies (needed for auth)
 app.use(cookieParser());
 
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+require('./config/auth.js');
+require('./config/passport.js')(passport); // pass passport for configuration
 
+// load our routes and pass in our app and fully configured passport
 require('./routes/apiFacebook.js')(app, passport);
-require('./routes/apiUser.js')(app); // load our routes and pass in our app and fully configured passport
+
 
 //Require all of the routes written for this app
 require('./routes/html.js')(app);
+require('./routes/apiUser.js')(app);
 require('./routes/apiCodes.js')(app);
 // require('./routes/apiEncounters.js')(app);
 

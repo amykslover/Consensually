@@ -16,7 +16,17 @@ body {
   position:fixed;
   top:0px;
 }
+ul {
 
+}
+
+.center {
+	text-align: center;
+}
+
+.white {
+	color: white;
+}
 .codeboxes {
 	margin-top: 100px;
 	display: flex;
@@ -28,6 +38,10 @@ body {
 	background: white;
 }
 
+.encountersummary {
+	background-color: white;
+}
+
 .box {
 	margin: 20px auto;
 	text-align: center;
@@ -35,6 +49,10 @@ body {
     padding: 10px; 
 	width: 250px;
     height: 150px;
+}
+
+.selectpartnertext {
+	color: white;
 }
 
 .red {
@@ -49,4 +67,9 @@ body {
 
 .green {
 	background-color: #408B59; 
+}
+
+.mystery {
+	background-color: #408BA6; 
+
 }

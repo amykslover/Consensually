@@ -8,7 +8,7 @@ module.exports = function(app) {
 
   //This is the page where a user will be able to set up, edit or delete their previously input codes
   //They will also be able to create an encounter here too
-  app.get("/profile/", function(req, res) {
+  app.get("/profile", function(req, res) {
   	res.sendFile(path.join(__dirname, "../public/profile.html"));
   });
 

@@ -7,22 +7,6 @@ var configAuth = require('./auth');
 
 module.exports = function(passport) {
 
-    // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
-    });
-
-    // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-        User.findById(id).then(function(user){
-      done(null, user);
-    }).catch(function(e){
-      done(e, false);
-    });
-
-    // =========================================================================
-    // FACEBOOK ================================================================
-    // =========================================================================
     passport.use(new FacebookStrategy({
 
         // pull in our app id and secret from our auth.js file
@@ -32,11 +16,11 @@ module.exports = function(passport) {
         profileFields: configAuth.facebookAuth.profileFields,
         passReqToCallback: true
     },
-
-    // facebook will send back the token and profile
+    
     function(request, token, refreshToken, profile, done) {
+      console.log('Inside Passport Auth')
         if (!request.user) {
-               db.User.findOne({ where :{ 'facebook_id' : profile.id }}).then (function (user) {
+               db.User.findOne({ where :{ 'userFacebookID' : profile.id }}).then (function (user) {
                  if (user) { // if there is a user id already but no token (user was linked at one point and then removed)
                  if (!user.userToken) {
                         user.userToken = token;
@@ -66,7 +50,19 @@ module.exports = function(passport) {
                   user.userEmail          = profile.emails[0].value;
                   user.save().then( function() {done(null, user);}).catch (function(e) {});
             }
-          }));
+      }));
 
-    })
+    // used to serialize the user for the session
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+      User.findById(id).then(function(user){
+        done(null, user);
+      }).catch(function(e){
+        done(e, false);
+      });
+    })  
 };

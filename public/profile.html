@@ -27,14 +27,6 @@
                 }
                 
             }});
-
-
-            $('.pincode-input2').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
-                $(".pincode-callback").html("Complete callback from 6-digit test: Current value: " + value);
-                
-                $(errorElement).html("I'm sorry, but the code not correct");
-            }});
-
             
             
         });
@@ -44,7 +36,11 @@
 <body>
 <div id="user_header">
     <h1>User Profile Placeholder</h1>
-    <p>Log Out</p>
+    <ul>
+        <li>Log Out</li>
+        <li>History</li>
+        <li>Create/li>
+    </ul>
 </div>
 
 <div class="container">
