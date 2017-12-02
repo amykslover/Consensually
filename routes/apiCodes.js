@@ -1,9 +1,10 @@
 var db = require('../models');
 
+
 module.exports = function(app) {
 
   //GET route for getting all of the codes for a given user
-  app.get('/api/codes', function(req, res) {
+  app.get('/api/codes', function(request, response) {
     
     var query = {};
 
@@ -20,6 +21,22 @@ module.exports = function(app) {
   });
 
 
+  app.get("/api/posts", function(req, res) {
+    var query = {};
+    if (req.query.author_id) {
+      query.AuthorId = req.query.author_id;
+    }
+    db.Post.findAll({
+      where: query
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+
+
+
+
   //GET rotue for retrieving a single code given the database id
   app.get('/api/codes/:id', function(req, res) {
     db.Codes.findOne({
@@ -33,11 +50,20 @@ module.exports = function(app) {
   });
 
   //POST route for creating a new code
-  app.post('/api/codes', function(req, res) {
-    db.Codes.create(req.body).then(function(dbCodes) {
-      res.json(dbCodes);
+  app.post('/api/codes', function(request, response) {
+    console.log('======================Post')
+    console.log(request.body)
+
+    db.Code.create({
+      code: request.body.code,
+      codeType: request.body.type,
+      UserId: '1',
+    })
+    .then(function(dbCodes) {
+      response.json(dbCodes);
     });
   });
+
 
   //DELETE route for deleting codes when a user wants to remove the codes (the consent code can only be updated though)
   app.delete('/api/codes/:id', function(req, res) {

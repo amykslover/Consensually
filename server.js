@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var path = require('path');
 //Setting up the EXPRESS application
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -12,6 +13,9 @@ var PORT = process.env.PORT || 3000;
 var db = require('./models');
 
 //View engine setup. Put handlebars or jade here if we are using a templating engine
+require('ejs')
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //APP.USE means that the middleware will all be run during every url request.
 //You can pass other middleware functions into requests on an ad hoc basis by calling them like this:
@@ -37,17 +41,17 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 //Gives us access to the public folder so we can use the css, js, etc
 app.use(express.static('public'));
 
-
-require('./config/auth.js');
-require('./config/passport.js')(passport); // pass passport for configuration
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 //Must mount cookieParser before session. This will read cookies (needed for auth)
 app.use(cookieParser());
 
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+require('./config/auth.js');
+require('./config/passport.js')(passport); // pass passport for configuration
 
+// load our routes and pass in our app and fully configured passport
 require('./routes/apiFacebook.js')(app, passport);
-require('./routes/apiUser.js')(app); // load our routes and pass in our app and fully configured passport
+
 
 //Require all of the routes written for this app
 require('./routes/html.js')(app);
