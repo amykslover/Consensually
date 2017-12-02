@@ -5,59 +5,23 @@ module.exports = function(app) {
 
   //GET route for getting all of the codes for a given user
   app.get('/api/codes', function(request, response) {
-    
-    var query = {};
+    var sessionUser = request.session.passport.user;
 
-    if (req.query.user_id) {
-      query.UserID = req.query.user_id;
-    }
-
-    db.Codes.findAll({
-      where: query,
-      include: [db.User]
-    }).then(function(dbCodes) {
-      res.json(dbCodes);
-    });
-  });
-
-
-  app.get("/api/posts", function(req, res) {
-    var query = {};
-    if (req.query.author_id) {
-      query.AuthorId = req.query.author_id;
-    }
-    db.Post.findAll({
-      where: query
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-
-
-
-
-  //GET rotue for retrieving a single code given the database id
-  app.get('/api/codes/:id', function(req, res) {
-    db.Codes.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.User]
-    }).then(function(dbCodes) {
-      res.json(dbCodes);
+    db.Code.findAll({ where: {UserId: sessionUser}})
+    .then(function(dbCodes) {
+      response.json(dbCodes);
     });
   });
 
   //POST route for creating a new code
   app.post('/api/codes', function(request, response) {
-    console.log('======================Post')
-    console.log(request.body)
+    var sessionUser = request.session.passport.user;
+    console.log(sessionUser)
 
     db.Code.create({
       code: request.body.code,
       codeType: request.body.type,
-      UserId: '1',
+      UserId: sessionUser,
     })
     .then(function(dbCodes) {
       response.json(dbCodes);

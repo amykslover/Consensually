@@ -19,7 +19,7 @@ module.exports = function(passport) {
     
     function(request, token, refreshToken, profile, done) {
       // console.log('All the arguments')
-      console.log(profile);
+      // console.log(profile);
 
         if (!request.user) {
           db.User.findOne({ where :{ 'userFacebookID' : profile.id }}).then (function (user) {
