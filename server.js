@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var path = require('path');
 //Setting up the EXPRESS application
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -12,6 +13,9 @@ var PORT = process.env.PORT || 3000;
 var db = require('./models');
 
 //View engine setup. Put handlebars or jade here if we are using a templating engine
+require('ejs')
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //APP.USE means that the middleware will all be run during every url request.
 //You can pass other middleware functions into requests on an ad hoc basis by calling them like this:
@@ -51,7 +55,6 @@ require('./routes/apiFacebook.js')(app, passport);
 
 //Require all of the routes written for this app
 require('./routes/html.js')(app);
-require('./routes/apiUser.js')(app);
 require('./routes/apiCodes.js')(app);
 // require('./routes/apiEncounters.js')(app);
 
