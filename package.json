@@ -18,6 +18,7 @@
   "homepage": "https://github.com/amykslover/Consensually#readme",
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "bootstrap-pincode-input": "^1.4.0",
     "cookie-parser": "^1.4.3",
