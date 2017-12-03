@@ -8,8 +8,14 @@ module.exports = function(app, passport) {
     });
 
 
-
-
+    //This is the page where a user will be able to enter data about the encounter they are creating
+    app.get('/create', isLoggedIn, function(request, response) {
+        console.log(request)
+        response.render('create.ejs', {
+            user : request.user // get the user out of session and pass to template
+        });
+    });
+    
 
     //Route for showing the profile page
     app.get('/profile', isLoggedIn, function(request, response) {
@@ -19,25 +25,25 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get("/profile/:id", function(request, response) {
-        // console.log('=====================================================================================================')
-        // console.log(request.params.id)
+    // app.get("/profile/:id", function(request, response) {
+    //     // console.log('=====================================================================================================')
+    //     // console.log(request.params.id)
 
 
-        db.User.findAll({
-            where: {
-                id: request.params.id
-            }
-        })
-        .then(function(data) {
-                // console.log('============================', data)
-                // // console.log('============================', data.dataValues.userEmail)
-                // // console.log('============================', data.dataValues.id)
-                // response.json(data)
-                // response.render('profile', data);
-            });
+    //     db.User.findAll({
+    //         where: {
+    //             id: request.params.id
+    //         }
+    //     })
+    //     .then(function(data) {
+    //             // console.log('============================', data)
+    //             // // console.log('============================', data.dataValues.userEmail)
+    //             // // console.log('============================', data.dataValues.id)
+    //             // response.json(data)
+    //             // response.render('profile', data);
+    //         });
 
-    });
+    // });
 
     // =====================================================================================================
     // FACEBOOK ROUTES =====================================================================================
