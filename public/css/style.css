@@ -7,6 +7,11 @@ body {
 .submit {
 	border-radius: 5px;
 }
+
+#participantsummary {
+	display: flex;
+}
+
 #user_header {
   width: 100%;
   height: 120px;
@@ -16,9 +21,16 @@ body {
   position:fixed;
   top:0px;
 }
-ul {
+
+.newencounter {
+	background-color: white;
+}
+
+.margin {
+	margin-top: 100px;
 
 }
+
 
 .btn {
 	width: 50%;

@@ -30,26 +30,20 @@ module.exports = function(app) {
 
 
   //DELETE route for deleting codes when a user wants to remove the codes (the consent code can only be updated though)
-  app.delete('/api/codes/:id', function(req, res) {
-    db.Codes.destroy({
+  app.delete('/api/codes/:id', function(request, response) {
+
+    db.Code.destroy({
       where: {
-        id: req.params.id
+        id: request.params.id
       }
     }).then(function(dbCodes) {
-      res.json(dbCodes);
+      response.json(dbCodes);
     });
   });
 
   //PUT route for updating codes when a user wantes to change existing codes instead of deleting them
-  app.put('/api/codes', function(req, res) {
-    db.Codes.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbCodes) {
-        res.json(dbCodes);
-      });
-  });
+  // app.put('/api/code', function(req, res) {
+
+  // });
+
 };

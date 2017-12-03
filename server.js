@@ -56,7 +56,7 @@ require('./routes/apiFacebook.js')(app, passport);
 //Require all of the routes written for this app
 require('./routes/html.js')(app);
 require('./routes/apiCodes.js')(app);
-// require('./routes/apiEncounters.js')(app);
+require('./routes/apiEncounters.js')(app);
 
 //Syncing sequelize models and then starting Express app
 db.sequelize.sync({ force: true }).then(function() {
