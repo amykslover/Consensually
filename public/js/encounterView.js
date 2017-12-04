@@ -1,5 +1,20 @@
 $(document).ready(function(){
 
+
+	var encounterContainer = $(".encounter-container");
+
+	function initializeRows() {
+		encounterContainer.empty();
+	    var encountersToAdd = [];
+	    
+	    for (var i = 0; i < encounters.length; i++) {
+	    	encountersToAdd.push(createNewRow(encounters[i]));
+	    }
+	    encounterContainer.append(encountersToAdd);
+	}
+
+
+
 	getEncounters()
 
 	function getEncounters() {
@@ -10,6 +25,12 @@ $(document).ready(function(){
 	    .done(function(data) {
 
 	      console.log(data)
+	      if (data.length < 1) {
+	      	displayEmpty(author);
+	      }
+	      else {
+        initializeRows();
+      }
 	      
 	      for (var i = 0; i < data.length; i++) {
 	      	console.log(data[i])

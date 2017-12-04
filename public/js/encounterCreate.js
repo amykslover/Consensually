@@ -1,17 +1,17 @@
 
 $(document).ready(function(){
 
-	startEncounter();
+	// startEncounter();
 
-	function startEncounter() {
+	// function startEncounter() {
 
-		var newEncounter = { 
-	    	encounterStatus: 'created'
-	    };
+	// 	var newEncounter = { 
+	//     	encounterStatus: 'created'
+	//     };
 	    
-	    createEncounter(newEncounter);
+	//     createEncounter(newEncounter);
 		
-	}
+	// }
 
 	function createEncounter(encounterObject) {
 		$.ajax({
@@ -60,7 +60,6 @@ $(document).ready(function(){
 		encounterPartnerId = parseInt($("#encounterpartner").val().trim());
 		//AJAX call with partner's user identifier as the argument passed
 		findUser(encounterPartnerId);
-		getPartnerCode(encounterPartnerId);
 	});
 
 
@@ -76,6 +75,21 @@ $(document).ready(function(){
 	    });
 	};
 
+	console.log($('.pincode-input2'));
+
+	$('.pincode-input2').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
+
+		    if(value.length!=4){
+		        $(errorElement).html("Please enter in all 4 digits");
+		    } 
+		    else{
+		    	var partnerCodeEntered = value;
+		    	console.log('Partner Entered Value');
+		    	console.log(partnerCodeEntered);
+
+		    }		
+	}});
+
 
 	$('.pincode-input1').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
 		//get codes 
@@ -85,34 +99,30 @@ $(document).ready(function(){
 	    else{
 	    	console.log('User Entered Value');
 	    	console.log(value);
-	    	compareCodes(value,'1234');
-
 	    }
 		
 	}});
 
-	$('.pincode-input2').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
-			
 
-
-		    if(value.length!=4){
-		        $(errorElement).html("Please enter in all 4 digits");
-		    } 
-		    else{
-		    	console.log('Partner Entered Value');
-		    	console.log(value);
-		    	compareCodes(value,'1111');
-		    }
-			
-	}});
-
-	function compareCodes(userCodeEntered, userCodeStored) {
+	function compareCodes(userId, userCodeEntered, userCodeStored) {
 		if(userCodeEntered === userCodeStored) {
-			alert('Code Correct')
-			return true
+
+			var updateEncounterInfo = { 
+			userId: userId,
+	    	encounterStatus: 'verified'
+	    	};
+
+			updateEncounter(updateEncounterInfo)
+			true
 		} else {
-			alert('Code Incorrect')
-			return false
+
+			var updateEncounterInfo = { 
+			userId: userId,
+	    	encounterStatus: 'unverified'
+	    	};
+
+			updateEncounter(updateEncounterInfo)
+			false
 		}
 	};
 
@@ -147,6 +157,11 @@ $(document).ready(function(){
 
 	    	var $userCode = $('<div id="user-code-box/>')
 	    	$userCode.appendTo('.encounteruser')
+	    	
+	    	console.log('partnerId inside findUser')
+	    	console.log(partnerId)
+
+	    	getPartnerCode(partnerId);
 
 	    });
 	};
