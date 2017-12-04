@@ -1,28 +1,51 @@
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Encounters</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>History</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/pinCode.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/pinCode.css">
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/pinCode.js"></script>
+    <script type="text/javascript" src="js/encounterView.js"></script>
 </head>
 <body>
+<header id="user_header">
+    
+                    <strong>User Name</strong>: <%= user.userName %><br>
+                    <strong>Identifier</strong>: <%= user.id %><br>
+    
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link" href="/profile">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/create">Create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="#">History</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">Logout</a>
+  </li>
+</ul>
+    
+</header>
 
-	<div id="user_header">
-	    <h1>User Profile Placeholder</h1>
-	    <p>Log Out</p>
-	</div>
+<div class="container margin">
+          
+        <div class="row center" id="encountercontainer">
+			<h1 class="white">ENCOUNTERS</h1>
 
-	<h1 class="white">ENCOUNTERS</h1>
+			<p class="white">User will see a table of their encounters with the following data elements:</p>
+			<p class="white">Encounter Date</p>
+			<p class="white">Encounter Partner</p>
+			<p class="white">Encounter Status</p>
+        </div>
+</div>
 
-	<p class="white">User will see a table of their encounters with the following data elements:</p>
-	<p class="white">Encounter Date</p>
-	<p class="white">Encounter Partner</p>
-	<p class="white">Encounter Status</p>
 
 </body>
 </html>

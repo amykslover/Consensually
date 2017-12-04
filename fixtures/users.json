@@ -1,0 +1,46 @@
+    [
+        {
+            "model": "Users",
+            "data": {
+                "userFacebookID": "66665923578584641",
+                "userToken" : "ZMKFWPMA9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMfdaaa",
+                "userName" : "Thomas Smith",
+                "userEmail" : "thomas.smith@mail.com",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+        {
+            "model": "Users",
+            "data": {
+                "userFacebookID": "4198419381928447",
+                "userToken" : "ODJOAFP9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRrew",
+                "userName" : "Cayden McQuerry",
+                "userEmail" : "cayden_mcqeury@mail.com",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+        {
+            "model": "Users",
+            "data": {
+                "userFacebookID": "10241703491093419",
+                "userToken" : "AFJAODSFJAnjQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRhhbs",
+                "userName" : "Jason Miller",
+                "userEmail" : "jay.miller@mail.com",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+        {
+            "model": "Users",
+            "data": {
+                "userFacebookID": "41030410934235454",
+                "userToken" : "IOADCNOPMA9njQ4BAJ1zjfoiasncofa7dX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOgstrthRdRgF1TMRfasf",
+                "userName" : "Anders Redmond",
+                "userEmail" : "anders@trench.com",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+    ]

@@ -1,6 +1,0 @@
-INSERT INTO `Users` (`id`,`userFacebookID`,`userToken`,`userName`,`userEmail`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'10155923578584641','EAATjZCJ9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRhf0ZD','Amy Slover','amykslover@gmail.com','2017-12-01 21:32:14','2017-12-01 21:32:14');
-
-INSERT INTO `Users` (`id`,`userFacebookID`,`userToken`,`userName`,`userEmail`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'10155923578584641','EAATjZCJ9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRhf0ZD','Amy Slover','amykslover@gmail.com','2017-12-01 21:32:14','2017-12-01 21:32:14');
-
-
-INSERT INTO `Users` (`id`,`userFacebookID`,`userToken`,`userName`,`userEmail`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'10155923578584641','EAATjZCJ9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRhf0ZD','Amy Slover','amykslover@gmail.com','2017-12-01 21:32:14','2017-12-01 21:32:14');

@@ -3,11 +3,23 @@ var db = require('../models');
 
 module.exports = function(app) {
 
-  //GET route for getting all of the codes for a given user
+  //GET route for getting all of the codes for the session user
   app.get('/api/codes', function(request, response) {
     var sessionUser = request.session.passport.user;
 
     db.Code.findAll({ where: {UserId: sessionUser}})
+    .then(function(dbCodes) {
+      response.json(dbCodes);
+    });
+  });
+
+  //GET route for getting all of the codes for the passed user
+  app.get('/api/codes/:id', function(request, response) {
+    var requestUser = request.params.id;
+    console.log('requestUser')
+    console.log(requestUser)
+
+    db.Code.findAll({ where: {UserId: requestUser}})
     .then(function(dbCodes) {
       response.json(dbCodes);
     });

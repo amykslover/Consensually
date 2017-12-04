@@ -15,11 +15,11 @@
 <body>
 <header id="user_header">
     
-                    <strong>userName</strong>: <%= user.userName %><br>
-                    <strong>Consent ID</strong>: <%= user.id %><br>
-                    <strong>userEmail</strong>: <%= user.userEmail %>
+                    <strong>User Name</strong>: <%= user.userName %><br>
+                    <strong>Identifier</strong>: <%= user.id %><br>
     
 <ul class="nav justify-content-end">
+
   <li class="nav-item">
     <a class="nav-link active" href="#">Profile</a>
   </li>
@@ -27,7 +27,7 @@
     <a class="nav-link" href="/create">Create</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">History</a>
+    <a class="nav-link" href="/encounters">History</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/logout">Logout</a>
@@ -43,7 +43,7 @@
 
             <div class="box green">
                 <div>   
-                    <h3>Consent</h3>
+                    <h3>Consent Code</h3>
                 </div>
 
                 <div>
@@ -53,38 +53,15 @@
                 <div class="buttonarea"></div>
             </div>
 
-<!--             <div class="box yellow">
-                <div>   
-                    <h3>Assist</h3>
-                </div>
-                <div>
-                    <input type="text" class="pincode-input1" id="assist">
-                </div>
-
-                <div> 
-                    <input type="submit" id="save2" value="Save" disabled="disabled">
-                </div>
-            </div>
-
-            <div class="box red">
-                <div>   
-                    <h3>Police</h3>
-                </div>
-                <div>
-                    <input type="text" class="pincode-input1" id="emergency">
-                </div>
-
-                <div> 
-                    <input type="submit" id="save3" value="Save" disabled="disabled">
-                </div>
-            </div> -->
-
         </div>
 
         <div class="newencounter">
 
         </div>
 
+        <div class="viewencounter">
+
+        </div>
 </div>
 
 
