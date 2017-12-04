@@ -10,11 +10,7 @@ module.exports = function(sequelize, DataTypes) {
   Encounter.associate = function(models) {
     
     Encounter.belongsToMany(models.User, {
-      through: {model: models.UserEncounter}
-
-      // foreignKey: {
-      //   allowNull: false
-      // }     
+      through: {model: models.UserEncounter}    
       
     })
   }

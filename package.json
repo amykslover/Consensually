@@ -32,7 +32,8 @@
     "passport-facebook": "^2.1.1",
     "path": "^0.12.7",
     "sequelize": "^4.23.2",
-    "sequelize-cli": "^3.1.0"
+    "sequelize-cli": "^3.1.0",
+    "sequelize-fixtures": "^0.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

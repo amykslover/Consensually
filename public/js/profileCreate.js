@@ -3,6 +3,7 @@ $(document).ready(function(){
     
     getCodes();
 
+
 	function getCodes() {
 		$.ajax({
 	      method: "GET",
@@ -107,6 +108,10 @@ $(document).ready(function(){
 
 	function createPage() {
 		window.location.href = "/create";
+	}
+
+	function historyPage() {
+		window.location.href = "/history";
 	}
 
 

@@ -1,0 +1,42 @@
+    [
+        {
+            "model": "Codes",
+            "data": {
+                "code" : "2222",
+                "codeType" : "consent",
+                "UserId" : "2",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+        {
+            "model": "Codes",
+            "data": {
+                "code" : "3333",
+                "codeType" : "consent",
+                "UserId" : "3",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+        {
+            "model": "Codes",
+            "data": {
+                "code" : "4444",
+                "codeType" : "consent",
+                "UserId" : "4",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+        {
+            "model": "Codes",
+            "data": {
+                "code" : "5555",
+                "codeType" : "consent",
+                "UserId" : "5",
+                "createdAt" : "2017-12-01 21:32:14",
+                "updatedAt" : "2017-12-01 21:32:14"
+            }
+        },
+    ]

@@ -7,43 +7,26 @@ module.exports = function(app, passport) {
         response.render('index.ejs'); // load the index.ejs file
     });
 
-
-    //This is the page where a user will be able to enter data about the encounter they are creating
-    app.get('/create', isLoggedIn, function(request, response) {
-        console.log(request)
-        response.render('create.ejs', {
-            user : request.user // get the user out of session and pass to template
-        });
-    });
-    
-
     //Route for showing the profile page
     app.get('/profile', isLoggedIn, function(request, response) {
-        // console.log(request.user)
         response.render('profile.ejs', {
             user : request.user // get the user out of session and pass to template
         });
     });
 
-    // app.get("/profile/:id", function(request, response) {
-    //     // console.log('=====================================================================================================')
-    //     // console.log(request.params.id)
-
-
-    //     db.User.findAll({
-    //         where: {
-    //             id: request.params.id
-    //         }
-    //     })
-    //     .then(function(data) {
-    //             // console.log('============================', data)
-    //             // // console.log('============================', data.dataValues.userEmail)
-    //             // // console.log('============================', data.dataValues.id)
-    //             // response.json(data)
-    //             // response.render('profile', data);
-    //         });
-
-    // });
+    //This is the page where a user will be able to enter data about the encounter they are creating
+    app.get('/create', isLoggedIn, function(request, response) {
+        response.render('create.ejs', {
+            user : request.user // get the user out of session and pass to template
+        });
+    });
+    
+    //This is the page where a user will be able to see a summary of their past encounters
+     app.get('/encounters', function(request, response) {
+        response.render('encounters.ejs', {
+            user : request.user // get the user out of session and pass to template
+        }); // load the index.ejs file
+    });
 
     // =====================================================================================================
     // FACEBOOK ROUTES =====================================================================================

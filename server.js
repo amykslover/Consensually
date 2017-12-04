@@ -54,13 +54,52 @@ require('./routes/apiFacebook.js')(app, passport);
 
 
 //Require all of the routes written for this app
-require('./routes/html.js')(app);
 require('./routes/apiCodes.js')(app);
 require('./routes/apiEncounters.js')(app);
 
 //Syncing sequelize models and then starting Express app
 db.sequelize.sync({ force: true }).then(function() {
+
   app.listen(PORT, function() {
     console.log("LISTENING ON PORT: " + PORT);
   });
+
+  db.User.bulkCreate([
+		{
+			userFacebookID: "66665923578584641",
+	        userToken: "ZMKFWPMA9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMfdaaa",
+	       	userName: "Thomas Smith",
+	        userEmail: "thomas.smith@mail.com"
+		},
+		{
+			userFacebookID: "4198419381928447",
+	        userToken: "ODJOAFP9njQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRrew",
+	       	userName: "Cayden McQuerry",
+	        userEmail: "cayden_mcqeury@mail.com"
+		},
+		{
+			userFacebookID: "10241703491093419",
+	        userToken: "AFJAODSFJAnjQ4BAJ1z0OQ9iM7ZA0xWi0zmZCeHuX58xZAFR2wiLtBrgXT04RvDuCUcmJUlDWn8iifcLFZB9jc9Qjtylyy7Ipwzmkl7m3PkDwa2H7TTUxZAoBddEnwrPvANRHEZCbPIe2nu7ngOmk5ggOdRgF1TMRhhbs",
+	       	userName: "Jason Miller",
+	        userEmail: "jay.miller@mail.com"
+		}
+	])
+
+  db.Code.bulkCreate([
+		{
+			code: "1111",
+	        codeType: "consent",
+	       	UserId: "1"
+		},
+		{
+			code: "2222",
+	        codeType: "consent",
+	       	UserId: "2"
+		},
+		{
+			code: "3333",
+	        codeType: "consent",
+	       	UserId: "3"
+		}
+	])
 });
