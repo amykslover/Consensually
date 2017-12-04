@@ -11,7 +11,12 @@
     <script type="text/javascript" src="js/pinCode.js"></script>
     <script type="text/javascript" src="js/encounterCreate.js"></script>
 </head>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        var sessionUser = '<%= user.userName %>'
+    })
+    user.userName
+</script>
 <body>
 
 <header id="user_header">
@@ -40,7 +45,7 @@
           
         <div class="row center" id="searchpartner">
                 <div class="selectpartnertext">
-                    <h3>Encounter Partner ID</h3>
+                    <p>Enter Partner ID</p>
                 </div>
 
                 <div>
@@ -59,9 +64,7 @@
                 <div class="encounteruser">
 
                     <div id="userProfileInfo">  
-                        <h3>User 1 Name (Profile User)</h3>
-                        <strong>Name</strong>: <%= user.userName %><br>
-                        <strong>Consensually ID</strong>: <%= user.id %><br>
+                        <strong>User Name</strong>: <%= user.userName %><br>
                     </div>
 
                     <div id="userCodeInput">
@@ -74,7 +77,7 @@
 
                 <div class="encounterpartner">
                     <div id="partnerProfileInfo">
-                        <h3>User 2 Name (Partner User)</h3>
+                        <p>User Name: Partner</p>
                     </div>
 
                     <div id="partnerCodeInput">
