@@ -4,7 +4,7 @@
   "description": "Application to capture the consent of each user party to an encounter and also provides a user the option to alert their friends or the police that intervention is required.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
