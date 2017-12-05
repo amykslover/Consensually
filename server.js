@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var path = require('path');
+var moment = require('moment');
 //Setting up the EXPRESS application
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -102,4 +103,5 @@ db.sequelize.sync({ force: true }).then(function() {
 	       	UserId: "3"
 		}
 	])
+
 });

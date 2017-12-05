@@ -3,56 +3,98 @@ body {
 	background-position: center;
 	padding-top:80px;
 	word-wrap:break-word;
+	font-size: 14px;
 }
-.submit {
+
+th {
+	font-size: 14px;
+	font-weight: bold;
+	border-bottom: darkgrey solid 2px;
+}
+
+tr {
+   line-height: 10px;
+   min-height: 10px;
+   height: 15px;
+   border-bottom: darkgrey solid 1px;
+}
+
+td {
+	font-size: 14px;
+}
+.clickbutton {
 	border-radius: 5px;
+	background-color: darkgrey;
+	margin: 5px;
 }
 
 .authbutton {
 	text-align: center;
 }
-.encountersummary {
 
+#searchpartner {
+	align-items: center;
+}
+
+#encountercontainer {
+	background-color: white;
 }
 #participantsummary {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
-	width: 100%;
+	margin: 0 auto;
+	width: 80%;
 }
-.userProfileInfo{
+
+#userProfileInfo{
 	padding: 10px;
+	height: 60px;
 }
-.encounteruser {
+
+#partnerSearch {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#partnerProfileInfo {
+	padding: 10px;
+	height: 60px;	
+}
+.encounteruserdiv {
 	border-radius: 15px;
 	border: solid black 2px;
 	background-color: lightgrey;
-	width: 200px;
+	width: 30%;
+	min-width: 230px;
 	height: 150px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }
 
-.encounterpartner {
+#encounterpartner {
+	width: 70px;
+}
+
+.encounterpartnerdiv {
 	border-radius: 15px;
 	border: solid black 2px;
 	background-color: lightgrey;
-	width: 200px;
+	width: 30%;
+	min-width: 230px;
 	height: 150px;
+	margin-right: 20px;
 }
 
-#partnerIdDiv{
-	background-color: red;
-	height: 20px;
-}
-
-#partnerNameDiv{
-	background-color: blue;
-	height: 20px;
+.grey {
+	color: lightgrey;
 }
 
 #user_header {
   width: 100%;
   margin: auto;
   padding: 10px;
-  background: grey;
+  background: lightgrey;
   color: black;
   position:fixed;
   top:0px;
@@ -62,7 +104,6 @@ body {
 
 .margin {
 	margin-top: 100px;
-
 }
 
 

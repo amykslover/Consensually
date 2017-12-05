@@ -11,18 +11,12 @@
     <script type="text/javascript" src="js/pinCode.js"></script>
     <script type="text/javascript" src="js/encounterCreate.js"></script>
 </head>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var sessionUser = '<%= user.userName %>'
-    })
-    user.userName
-</script>
+
 <body>
 
 <header id="user_header">
-    
-                    <strong>User Name</strong>: <%= user.userName %><br>
-                    <strong>Identifier</strong>: <%= user.id %><br>
+    <strong>UserID</strong>: <%= user.id %><br>
+    <strong>UserName</strong>: <%= user.userName %><br>
     
 <ul class="nav justify-content-end">
   <li class="nav-item">
@@ -42,47 +36,39 @@
 </header>
 
 <div class="container margin">
-          
-        <div class="row center" id="searchpartner">
-                <div class="selectpartnertext">
-                    <p>Enter Partner ID</p>
-                </div>
-
-                <div>
-                    <input type="text" id="encounterpartner">
-                </div>
-                
-                <div>
-                    <input type="submit" id="partnersearch" value="Search">
-                </div>
-        </div>
 
         <div class="row center">
 
             <div class="encountersummary" id="participantsummary">
 
-                <div class="encounteruser">
+                <div class="encounteruserdiv">
 
                     <div id="userProfileInfo">  
-                        <strong>User Name</strong>: <%= user.userName %><br>
+                        <strong>Profile Name:</strong> <br><%= user.userName %>
                     </div>
 
                     <div id="userCodeInput">
                         <div>
-                            <input type="text" class="pincode-input1" id="userconsent">
+                            <input type="text" class="pincode-input1" id="userconsent" disabled="disabled">
                         </div>
                     </div>
 
                 </div>
 
-                <div class="encounterpartner">
+                <div class="encounterpartnerdiv">
+
                     <div id="partnerProfileInfo">
-                        <p>User Name: Partner</p>
+                        <strong id="partnername">Partner Name:</strong>
+                        <div id="searchpartner">
+                            <input type="text" id="encounterpartner" placeholder="Partner ID">
+                            <input class="clickbutton" id="partnersearch" type="submit" value="Search">
+                        </div>
                     </div>
+
 
                     <div id="partnerCodeInput">
                         <div>
-                            <input type="text" class="pincode-input2" id="partnerconsent">
+                            <input type="text" class="pincode-input2" id="partnerconsent" disabled="disabled">
                         </div>
                     </div>
     

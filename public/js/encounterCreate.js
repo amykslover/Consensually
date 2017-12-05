@@ -1,17 +1,62 @@
 
 $(document).ready(function(){
 
-	// startEncounter();
+	getUserCode()
+	// populatePartnerFromSession()
 
-	// function startEncounter() {
+	function getUserCode(userId) {
 
-	// 	var newEncounter = { 
-	//     	encounterStatus: 'created'
-	//     };
+		if(userId){
+			$.ajax({
+		      method: "GET",
+		      url: '/api/codes/' + userId
+		    })
+		    .done(function(data) {
+			    
+			    var pStoredIdentifier = data[0].UserId;
+				sessionStorage.setItem('pStoredId', pStoredIdentifier);
+		      	pStoredId  = sessionStorage.getItem('pStoredId');
+		      	
+		      	var pStoredCodeConsent = data[0].code;
+		      	sessionStorage.setItem('pStoredCode', pStoredCodeConsent);
+				pStoredCode = sessionStorage.getItem('pStoredCode');
+
+				console.log(pStoredId,pStoredCode);
+		    });
+		}
+		else {
+
+			$.ajax({
+		      method: "GET",
+		      url: '/api/codes'
+		    })
+		    .done(function(data) {
+
+		    	var uStoredIdentifier = data[0].UserId;
+				sessionStorage.setItem('uStoredId', uStoredIdentifier);
+		    	
+		    	var uStoredCodeConsent = data[0].code;
+				sessionStorage.setItem('uStoredCode', uStoredCodeConsent);
+			
+				uStoredId = sessionStorage.getItem('uStoredId');
+				uStoredCode = sessionStorage.getItem('uStoredCode');
+				console.log(uStoredId,uStoredCode);
+
+		    });
+		}
+
+	};
+
+
+	function startEncounter() {
+
+		var newEncounter = { 
+	    	encounterStatus: 'Created'
+	    };
 	    
-	//     createEncounter(newEncounter);
+	    createEncounter(newEncounter);
 		
-	// }
+	}
 
 	function createEncounter(encounterObject) {
 		$.ajax({
@@ -21,40 +66,13 @@ $(document).ready(function(){
 	    })
 	    .done(function() {
 	      console.log('ENCOUNTER ADDED')
-	    });	
+	    });
 	}
 
-	var storedUserCodeObject = function getUserCode() {
-							var userValidCode = $.ajax({
-						      method: "GET",
-						      url: '/api/codes'
-						    })
-						    .done(function(data) {
-						    	return data[0].code;
-
-						    });
-						    return userValidCode;
-						  
-							};
-
-
-
-	const val = Promise.resolve(storedUserCodeObject()).then(function(v) {
-
-		storedUserCode = v[0].code;
-		console.log(storedUserCode);
-		return storedUserCode;
-
-	});
-
-
-	var partnerId = $("#partnerIdDiv");
-	var partnerName = $("#partnerIdDiv");
-
-	//Look up the partner the user has entered for this encounter
 
 	$('#partnersearch').on("click", function(event) {
 		event.preventDefault();
+		startEncounter();
 
 		var encounterPartnerId;
 		encounterPartnerId = parseInt($("#encounterpartner").val().trim());
@@ -63,42 +81,76 @@ $(document).ready(function(){
 	});
 
 
-	function getPartnerCode(userId) {
-		$.ajax({
-	      method: "GET",
-	      url: '/api/codes/' + userId
-	    })
-	    .done(function(data) {
-	      	var partnerValidCode = data[0].code;
-	      	console.log("PARTNER CODE", partnerValidCode);
-	      	return partnerValidCode;
-	    });
-	};
-
-	console.log($('.pincode-input2'));
-
+	var uGuessCount = 3;
 	$('.pincode-input2').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
 
 		    if(value.length!=4){
 		        $(errorElement).html("Please enter in all 4 digits");
-		    } 
+		    }
 		    else{
-		    	var partnerCodeEntered = value;
-		    	console.log('Partner Entered Value');
-		    	console.log(partnerCodeEntered);
 
-		    }		
-	}});
+		    	var pCodeEntered = value;
+
+		    	var partnerOutcome = (compareCodes(pStoredId,pCodeEntered,pStoredCode));
+
+		    	if(partnerOutcome) {
+		    		alert('Code Entered Correctly, Encounter Verified');
+		    		console.log('GET ENCOUNTER & UPDATE============================================')
+		    		getEncounter(pStoredId,'Verified');
+		    	}
+		    	else {
+		    		uGuessCount --
+	    			console.log(uGuessCount);
+		    		alert('Incorrect Code, You Have ' + uGuessCount + ' More Attempts');
+
+		    		if(uGuessCount > 0) {
+		    			$(".pincode-input-text").val("");
+		    		}
+		    		else {
+		    			alert('The wrong code has been entered too many times.')
+		    			console.log('GET ENCOUNTER & UPDATE============================================')
+		    			getEncounter(pStoredId,'Unverified');
+		    			// window.location.href = "/";
+		    		}
+		    	}
+		    }
+		}
+	});
 
 
+
+
+	var pGuessCount = 3;
 	$('.pincode-input1').pincodeInput({hidedigits:true,inputs:4,complete:function(value, e, errorElement){
-		//get codes 
+
 	    if(value.length!=4){
 	        $(errorElement).html("Please enter in all 4 digits");
 	    } 
 	    else{
+	    	var uCodeEntered = value;
 	    	console.log('User Entered Value');
-	    	console.log(value);
+	    	console.log(uCodeEntered);
+
+	    	var userOutcome = (compareCodes(uStoredId,uCodeEntered,uStoredCode));
+
+	    	if(userOutcome) {
+	    		alert('Code Entered Correctly');
+	    		updateEncounter(uStoredId,'Verified')
+	    	}
+	    	else {
+	    		pGuessCount --
+	    		console.log(pGuessCount);
+	    		alert('Incorrect Code, You Have ' + pGuessCount + ' More Attempts');
+
+		    		if(pGuessCount > 0) {
+		    			$(".pincode-input-text").val("");
+		    		}
+		    		else {
+		    			alert('The wrong code has been entered too many times.')
+		    			updateEncounter(uStoredId,'Unverified')
+		    			// window.location.href = "/";
+		    		}
+	    	}
 	    }
 		
 	}});
@@ -106,29 +158,11 @@ $(document).ready(function(){
 
 	function compareCodes(userId, userCodeEntered, userCodeStored) {
 		if(userCodeEntered === userCodeStored) {
-
-			var updateEncounterInfo = { 
-			userId: userId,
-	    	encounterStatus: 'verified'
-	    	};
-
-			updateEncounter(updateEncounterInfo)
-			true
+			return true
 		} else {
-
-			var updateEncounterInfo = { 
-			userId: userId,
-	    	encounterStatus: 'unverified'
-	    	};
-
-			updateEncounter(updateEncounterInfo)
-			false
+			return false
 		}
 	};
-
-
-
-
 
 
 	function findUser(partnerId) {
@@ -137,45 +171,63 @@ $(document).ready(function(){
 	      method: "GET",
 	      url: "/api/partner/" + partnerId
 	    }).done(function(partner) {
-	    	var partnerName = partner.userName;
-	    	var partnerId = partner.id;
-
-	    	console.log('PARTNER RESPONSE')
-	    	console.log(partnerId)
-	    	console.log(partnerName)
-
 	    	$("#searchpartner").empty();
+	    	
+
+	    	var partnerId = partner.id;
+	    	getUserCode(partnerId);
 			
+	    	
+	    	var pStoredName = partner.userName;
+				sessionStorage.setItem('pStoredName', pStoredName);
+		      	partnerName  = sessionStorage.getItem('pStoredName');
+		      	console.log('SESSION PARTNER NAME');
+		      	console.log(partnerName);
+
 			var $partnerName = $('<p id="partner-name"/>');
 			$partnerName.text(partnerName);
-
-			var $partnerId = $('<p id="partner-id"/>');
-			$partnerId.text(partnerId);
-
-			$partnerId.appendTo('.encounterpartner');
-	    	$partnerName.appendTo('.encounterpartner');
+	    	$partnerName.appendTo('#partnerProfileInfo');
 
 	    	var $userCode = $('<div id="user-code-box/>')
 	    	$userCode.appendTo('.encounteruser')
-	    	
-	    	console.log('partnerId inside findUser')
-	    	console.log(partnerId)
 
-	    	getPartnerCode(partnerId);
 
 	    });
 	};
 
+	function getEncounter(userId,currentStatus) {
+
+		$.ajax({
+	      method: "GET",
+	      url: '/api/encounter'
+	    }).done(function(encounter) {
+	    	console.log('LAST ENCOUNTER');
+	    	var lastEncounter = encounter[0].id;
+	    	console.log(lastEncounter);
+	    	updateEncounter(userId,lastEncounter,currentStatus)
+	    });
+
+	};
 
 
-	function updateEncounter(encounterObject) {
+	function updateEncounter(userId,lastEncounter,currentStatus) {
+
+		var encounterObject = {
+			currentEncounterId: lastEncounter,
+			currentEncounterUser: userId,
+			currentEncounterStatus: currentStatus
+		};
+
+		console.log(encounterObject);
+
 		$.ajax({
 	      method: "PUT",
-	      url: '/api/encounters',
+	      url: '/api/encounter/' + lastEncounter,
 	      data: encounterObject
 	    })
-	    .done(function() {
-	      console.log('ENCOUNTER UPDATED')
+	    .done(function(data) {
+	    	console.log(data);
+	      	console.log('ENCOUNTER UPDATED')
 	    });	
 	}
 
