@@ -24,10 +24,19 @@ module.exports = function(app) {
     });
   });
 
+  //Get the most recent encounter to be updated by the PUT request
+  app.get('/api/encounter', function(request, response) {
 
-  app.post("/api/encounters", function(request, response) {
-  	// console.log('API Encounters POST');
-  	// console.log(request);
+    db.Encounter.findAll({
+      limit: 1,
+      order: [ [ 'createdAt', 'DESC' ]]
+    }).then(function(dbEncounter){
+      response.json(dbEncounter);
+    });     
+  })
+
+
+  app.post('/api/encounters', function(request, response) {
 
   	var sessionUser = request.session.passport.user;
     console.log(sessionUser)
@@ -48,50 +57,17 @@ module.exports = function(app) {
     });
   });
 
-  // app.post("/api/encounters/:id", function(req, res){
-    
-  //   console.log('Adding to an existing encounter')
-  //   var requestBody = request.body.encounterStatus;
-  //   console.log(requestBody)
+  app.put('/api/encounter/:id', function(request,response) {
+    var encounterId = request.params.id;
+    var requestObject = request
+    console.log('DOES THIS WORK?============================================')
 
-  //   var user = request.params.id;
-  //   console.log(user)
-
-  //   db.Encounter.update({
-  //      encounterStatus: requestBody
-  //     },{ 
-  //       where: {
-  //         id:  req.query.post_id
-  //       },
-  //       include: [db.Author]
-  //     }
-  //   ).then(function(num){
-  //     //Checking to see if we need to modify AuthorPost
-  //     db.AuthorPost.findAll({
-  //       where: {
-  //         PostId: req.query.post_id
-  //       }
-  //     }).then(function(AuthorPosts1){
-  //       console.log("found pairs: ",AuthorPosts1)
-  //       if (AuthorPosts1.reduce(function(acc, v){
-  //         // console.log(`is ${v.dataValues.AuthorId} equal to ${req.body.AuthorId}?`)
-  //         return v.dataValues.AuthorId == req.body.AuthorId || acc;
-  //       }, false)){
-  //         //same author, so no need to create new entry to AuthorPost
-  //         // console.log("same author!")
-  //         res.json({})
-  //       } else {
-  //         //new author, need to create new entry to AuthorPost
-  //         db.AuthorPost.create({
-  //           AuthorId: req.body.AuthorId,
-  //           PostId: req.query.post_id
-  //         }).then(function(){
-  //           res.json({})
-  //         })
-  //       }
-  //     })
-  //   })
-  // })
+      // db.Encounter.update(
+      // { 
+      //   where: {id: encounterId} 
+      // }).
+  
+  });
 
 
  app.get('/api/partner/:id', function(request, response) {

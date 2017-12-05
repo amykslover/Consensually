@@ -1,5 +1,6 @@
 .pincode-input-container {
 	display:inline-block;
+	padding: 8px;
 }
 .pincode-input-container input.first {
 	border-top-right-radius:0px;
