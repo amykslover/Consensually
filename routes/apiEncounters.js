@@ -57,17 +57,28 @@ module.exports = function(app) {
     });
   });
 
-  app.put('/api/encounter/:id', function(request,response) {
-    var encounterId = request.params.id;
-    var requestObject = request
-    console.log('DOES THIS WORK?============================================')
+//   app.put('/api/encounter/:id', function(request,response) {
+//     var encounterId = request.params.id;
+//     var requestObject = request
+//     console.log('DOES THIS WORK?============================================')
 
-      // db.Encounter.update(
-      // { 
-      //   where: {id: encounterId} 
-      // }).
+//       db.Encounter.update(
+//         { encounterStatus: 'Sample'},
+//         { where: {id: encounterId} 
+//       }).then()
   
-  });
+// Project.update(
+//   { title: 'a very different title now' },
+//   { where: { _id: 1 } }
+// )
+//   .then(result =>
+//     handleResult(result)
+//   )
+//   .catch(err =>
+//     handleError(err)
+//   )
+
+//   });
 
 
  app.get('/api/partner/:id', function(request, response) {
