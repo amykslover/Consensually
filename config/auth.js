@@ -6,7 +6,8 @@ module.exports = {
         'callbackURL'   : 'http://localhost:3000/auth/facebook/callback',
         'profileFields' : ['emails', 'displayName'] // For requesting permissions from Facebook API
     }
-
+        // 'callbackURL'   : 'http://localhost:3000/auth/facebook/callback',
+        // 'callbackURL'   : 'https://ancient-badlands-21408.herokuapp.com/',
 
     // 'googleAuth' : {
     //     'clientID'      : 'your-secret-clientID-here',

@@ -16,8 +16,6 @@ module.exports = function(app) {
   //GET route for getting all of the codes for the passed user
   app.get('/api/codes/:id', function(request, response) {
     var requestUser = request.params.id;
-    console.log('requestUser')
-    console.log(requestUser)
 
     db.Code.findAll({ where: {UserId: requestUser}})
     .then(function(dbCodes) {
@@ -28,7 +26,6 @@ module.exports = function(app) {
   //POST route for creating a new code
   app.post('/api/codes', function(request, response) {
     var sessionUser = request.session.passport.user;
-    console.log(sessionUser)
 
     db.Code.create({
       code: request.body.code,

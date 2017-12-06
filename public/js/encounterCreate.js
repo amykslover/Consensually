@@ -96,6 +96,7 @@ $(document).ready(function(){
 		    	if(partnerOutcome) {
 		    		alert('Code Entered Correctly, Encounter Verified');
 		    		console.log('GET ENCOUNTER & UPDATE============================================')
+		    		
 		    		getEncounter(pStoredId,'Verified');
 		    	}
 		    	else {
@@ -135,7 +136,8 @@ $(document).ready(function(){
 
 	    	if(userOutcome) {
 	    		alert('Code Entered Correctly');
-	    		updateEncounter(uStoredId,'Verified')
+	    		getEncounter(uStoredId,'User 1 Verified')
+	    		
 	    	}
 	    	else {
 	    		pGuessCount --
@@ -147,7 +149,7 @@ $(document).ready(function(){
 		    		}
 		    		else {
 		    			alert('The wrong code has been entered too many times.')
-		    			updateEncounter(uStoredId,'Unverified')
+		    			getEncounter(uStoredId,'User 1 Failed Verification')
 		    			// window.location.href = "/";
 		    		}
 	    	}
@@ -201,14 +203,20 @@ $(document).ready(function(){
 	      method: "GET",
 	      url: '/api/encounter'
 	    }).done(function(encounter) {
-	    	console.log('LAST ENCOUNTER');
+	    	console.log('getEncounter: userId');
+	    	console.log(userId);
+	    	console.log('getEncounter: currentStatus');
+	    	console.log(currentStatus);
+
+
+	    	console.log('getEncounter: lastEncounter');
 	    	var lastEncounter = encounter[0].id;
 	    	console.log(lastEncounter);
+
 	    	updateEncounter(userId,lastEncounter,currentStatus)
 	    });
 
 	};
-
 
 	function updateEncounter(userId,lastEncounter,currentStatus) {
 
@@ -222,7 +230,7 @@ $(document).ready(function(){
 
 		$.ajax({
 	      method: "PUT",
-	      url: '/api/encounter/' + lastEncounter,
+	      url: '/api/encounter',
 	      data: encounterObject
 	    })
 	    .done(function(data) {
@@ -230,5 +238,5 @@ $(document).ready(function(){
 	      	console.log('ENCOUNTER UPDATED')
 	    });	
 	}
-
+	
 });
