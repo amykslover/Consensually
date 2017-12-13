@@ -1,14 +1,14 @@
 # Consensually
 Application to capture the consent of each user party to an encounter and also provides a user the option to alert their friends or the police that intervention is required.
 
-#h1 Account Setup and Login
+# H1 Account Setup and Login
 
 User can create an account and then login using Facebook authentication
 
 ![Login](https://github.com/amykslover/Consensually/blob/master/IMG_ReadMe/Consensually_Login.png "Consensually Login")
 
 
-#h1 Create Profile
+# H1 Create Profile
 
 User must enter their consent code, a four digit code that when entered during an encounter will indicate that they were coherant enought to remember their code and gave their consent. 
 
@@ -16,7 +16,7 @@ User must enter their consent code, a four digit code that when entered during a
 ![Set Up Profile](https://github.com/amykslover/Consensually/blob/master/IMG_ReadMe/Consensually_EnterCode_02.png "Set Up Profile 2")
 ![Set Up Profile](https://github.com/amykslover/Consensually/blob/master/IMG_ReadMe/Consensually_EnterCode_03.png "Set Up Profile 3")
 
-#h1 Create New Encounter
+# H1 Create New Encounter
 
 ![Create Encounter](https://github.com/amykslover/Consensually/blob/master/IMG_ReadMe/Consensually_CreateEncounter_01.png "Create Encounter 1")
 
@@ -26,6 +26,6 @@ User must enter their consent code, a four digit code that when entered during a
 
 ![Create Encounter](https://github.com/amykslover/Consensually/blob/master/IMG_ReadMe/Consensually_CreateEncounter_04.png "Create Encounter 4")
 
-#h1 View Encounter History
+# H1 View Encounter History
 
 ![View Encounter History](https://github.com/amykslover/Consensually/blob/master/IMG_ReadMe/Consensually_EncounterHistory_01.png "View Encounter History")
